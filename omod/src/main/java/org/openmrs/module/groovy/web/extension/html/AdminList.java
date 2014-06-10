@@ -28,12 +28,26 @@ import org.openmrs.module.web.extension.AdministrationSectionExt;
  */
 public class AdminList extends AdministrationSectionExt {
 
+	private static String requiredPrivileges = "List Groovy Scripts";
 	/**
 	 * @see org.openmrs.module.web.extension.AdministrationSectionExt#getMediaType()
 	 */
 	public Extension.MEDIA_TYPE getMediaType() {
 		return Extension.MEDIA_TYPE.html;
 	}
+	
+ 	/**
+	 * @see AdministrationSectionExt#getRequiredPrivilege()
+	 */
+
+	@Override
+	public String getRequiredPrivilege() {
+		if (requiredPrivileges == null) {
+			StringBuilder builder = new StringBuilder();
+			requiredPrivileges = builder.toString();
+		}
+		return requiredPrivileges;
+	}	
 	
 	/**
 	 * @see org.openmrs.module.web.extension.AdministrationSectionExt#getTitle()
